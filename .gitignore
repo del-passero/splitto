@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# VSCode/JetBrains
+.vscode/
+.idea/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Env files (ВАЖНО)
+.env
+*.env
+backend/.env
+frontend/.env
+bot/.env
+
+venv/
+ENV/
+env/
+.venv/
+
+# Other
+.DS_Store
+*.log
+*.db
+
+# IDE, VSCode, PyCharm и т.п.
+.vscode/
+.idea/
+*.swp
