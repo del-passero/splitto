@@ -1,15 +1,16 @@
 # node
 node_modules
 dist
+.vite
+.cache
 .env
-
-# IDE
-.vscode
-.idea
+*.log
 
 # system
 .DS_Store
-*.log
+Thumbs.db
 
-# Docker
-docker-compose.override.yml
+# editor
+.vscode
+.idea
+*.swp

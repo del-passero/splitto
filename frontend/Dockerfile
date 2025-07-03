@@ -1,22 +1,21 @@
-# Этап 1: сборка проекта
+# --- 1. Сборка приложения ---
 FROM node:20-alpine AS builder
 
 WORKDIR /app
-
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm install
-
 COPY . .
 RUN npm run build
 
-# Этап 2: Nginx для сервинга
-FROM nginx:stable-alpine AS production
+# --- 2. Слой для раздачи фронта через nginx ---
+FROM nginx:alpine
 
+# Копируем свой nginx.conf (важно!)
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Копируем только собранную статику
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Кастомная конфигурация (по желанию)
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
 
+CMD ["nginx", "-g", "daemon off;"]
